@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORY Platform — Dashboard</title>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/theme-nexory.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="nx-header">
+    <div class="nx-container nx-header-inner">
+      <a href="../index.html" class="nx-brand">
+        <img src="../assets/img/logo/nexory-logo.png" alt="NEXORY logo" class="nx-logo" />
+        <span class="nx-brand-text">NEXORY</span>
+      </a>
+
+      <nav class="nx-nav">
+        <a href="../index.html#about" class="nx-nav-link">About</a>
+        <a href="../index.html#ecosystem" class="nx-nav-link">Ecosystem</a>
+        <a href="../products/index.html" class="nx-nav-link">Products</a>
+        <a href="../platform/index.html" class="nx-nav-link">Platform</a>
+        <a href="../index.html#contact" class="nx-nav-link nx-nav-link--accent">Contact</a>
+      </nav>
+
+      <button class="nx-burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- DASHBOARD HEADER -->
+  <section class="nx-dashboard-header">
+    <div class="nx-container">
+      <h1 class="nx-dashboard-title">Dashboard</h1>
+      <p class="nx-dashboard-subtitle">Live overview of loads, drivers and requests</p>
+
+      <div class="nx-dashboard-nav">
+        <a href="#" class="nx-dash-tab nx-dash-tab--active">Overview</a>
+        <a href="#" class="nx-dash-tab">Loads</a>
+        <a href="#" class="nx-dash-tab">Drivers</a>
+        <a href="#" class="nx-dash-tab">Requests</a>
+        <a href="#" class="nx-dash-tab">Documents</a>
+        <a href="#" class="nx-dash-tab">Settings</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DASHBOARD GRID -->
+  <main>
+    <section class="nx-page-section">
+      <div class="nx-container nx-dashboard-grid">
+
+        <!-- CARD: Active Loads -->
+        <div class="nx-card nx-card-soft">
+          <h3 class="nx-card-title">Active Loads</h3>
+          <p class="nx-card-text">Overview of loads currently in progress.</p>
+          <ul class="nx-list nx-list-tight">
+            <li>ETAs, pickup/delivery windows</li>
+            <li>Driver assignment monitoring</li>
+            <li>Live status updates</li>
+          </ul>
+        </div>
+
+        <!-- CARD: Drivers -->
+        <div class="nx-card nx-card-soft">
+          <h3 class="nx-card-title">Drivers Overview</h3>
+          <p class="nx-card-text">
+            Who is under load, who is empty, who is delayed — simple real-time indicators.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Status tracking</li>
+            <li>Communication shortcuts</li>
+            <li>Driver logs & history</li>
+          </ul>
+        </div>
+
+        <!-- CARD: Requests -->
+        <div class="nx-card nx-card-soft">
+          <h3 class="nx-card-title">Request Center</h3>
+          <p class="nx-card-text">
+            All safety, claims, maintenance and accounting tickets in one interface.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Ownership + SLA tracking</li>
+            <li>Photos, docs, timestamps</li>
+            <li>Driver-submitted issues</li>
+          </ul>
+        </div>
+
+        <!-- CARD: Documents -->
+        <div class="nx-card nx-card-soft">
+          <h3 class="nx-card-title">Documents & Photos</h3>
+          <p class="nx-card-text">
+            Pipeline for incoming PODs, BOLs, ratecons, invoices and damage photos.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Document processing queue</li>
+            <li>Tagging, sorting, extraction</li>
+            <li>Preview and verification</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="nx-footer">
+    <div class="nx-container nx-footer-inner">
+      <span>© <span id="year"></span> NEXORY. All rights reserved.</span>
+      <span class="nx-footer-meta">AI • Logistics • Ecosystem • IT</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const burger = document.querySelector(".nx-burger");
+    const nav = document.querySelector(".nx-nav");
+    if (burger) {
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("is-open");
+        nav.classList.toggle("is-open");
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+

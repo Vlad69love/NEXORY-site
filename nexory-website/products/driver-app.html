@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORY Driver — Mobile app for drivers</title>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/theme-nexory.css" />
+</head>
+<body>
+  <!-- HEADER  -->
+ <header class="nx-header">
+  <div class="nx-container nx-header-inner">
+    <a href="../index.html" class="nx-brand">
+      <img src="../assets/img/logo/nexory-logo.png" alt="NEXORY logo" class="nx-logo" />
+      <span class="nx-brand-text">NEXORY</span>
+    </a>
+
+    <nav class="nx-nav">
+      <a href="../index.html#about" class="nx-nav-link">About</a>
+      <a href="../index.html#ecosystem" class="nx-nav-link">Ecosystem</a>
+      <a href="../products/index.html" class="nx-nav-link">Products</a>
+      <a href="../platform/index.html" class="nx-nav-link">Platform</a>
+      <a href="../index.html#contact" class="nx-nav-link nx-nav-link--accent">Contact</a>
+    </nav>
+
+    <button class="nx-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+
+  <!-- HERO -->
+  <section class="nx-page-hero">
+    <div class="nx-container">
+      <div class="nx-breadcrumbs">
+        <a href="../index.html">Home</a> &nbsp;•&nbsp;
+        <a href="./index.html">Products</a> &nbsp;•&nbsp;
+        <span>NEXORY Driver</span>
+      </div>
+      <h1 class="nx-page-title">NEXORY Driver</h1>
+      <p class="nx-page-subtitle nx-section-text">
+        Mobile app that gives drivers a clear view of their routes, loads, documents and payouts —
+        without chaos in chats and screenshots.
+      </p>
+      <div class="nx-tags">
+        <span class="nx-tag">Mobile-first</span>
+        <span class="nx-tag">iOS / Android (Expo)</span>
+        <span class="nx-tag">Driver experience</span>
+        <span class="nx-tag">Future MVP</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main>
+    <section class="nx-page-section">
+      <div class="nx-container nx-grid-2">
+        <div>
+          <h2 class="nx-section-title">Core flows</h2>
+          <p class="nx-section-text">
+            NEXORY Driver is focused on clarity: the driver always sees current trip, next stop,
+            special instructions and what documents are required.
+          </p>
+
+          <ul class="nx-list">
+            <li><strong>Trips & loads:</strong> list of active and completed trips.</li>
+            <li><strong>Stop details:</strong> pickup, delivery, addresses, notes.</li>
+            <li><strong>Check-in/out:</strong> quick status updates with timestamps.</li>
+            <li><strong>Documents:</strong> photo capture for BOL, POD, damage.</li>
+            <li><strong>History:</strong> archive of completed loads and payouts.</li>
+          </ul>
+
+          <p class="nx-section-text">
+            Technically, the app can start as an Expo-based MVP and later evolve into a full
+            driver operating system connected to NEXORY Dispatch and NEXORY AI Core.
+          </p>
+        </div>
+
+        <div class="nx-card nx-card-soft">
+          <h3 class="nx-card-title">Tech vision</h3>
+          <p class="nx-card-text">
+            The first version can be fully focused on UX and basic flows, while the backend might
+            be as simple as a Google Sheets / Firebase / Supabase layer. Later it can be migrated
+            to a dedicated API.
+          </p>
+          <div class="nx-badge-grid" style="margin-top: 10px;">
+            <span class="nx-badge">Expo / React Native</span>
+            <span class="nx-badge">REST / GraphQL API</span>
+            <span class="nx-badge">Push notifications</span>
+            <span class="nx-badge">Offline-friendly UI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nx-page-section nx-section-alt">
+      <div class="nx-container nx-grid-2">
+        <div class="nx-card">
+          <h3 class="nx-card-title">Why it matters</h3>
+          <p class="nx-card-text">
+            For many small fleets, communication with drivers happens via messengers and calls.
+            NEXORY Driver is a step towards a structured, predictable and measurable flow.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Less mistakes due to missing instructions</li>
+            <li>Faster document flow for factoring & clients</li>
+            <li>Better visibility of driver workload and history</li>
+            <li>Foundation for AI suggestions directly in the app</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="nx-card-title">Next steps</h3>
+          <p class="nx-section-text">
+            This page works as a product card for future collaborators and developers. When the MVP
+            is ready, we can add:
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Screenshots and UI previews</li>
+            <li>Technical documentation / API links</li>
+            <li>Download links (TestFlight, Google Play Internal)</li>
+            <li>Changelog for product iterations</li>
+          </ul>
+          <a href="../platform/index.html" class="nx-btn nx-btn-primary" style="margin-top: 12px;">
+            See platform vision
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER  -->
+<footer class="nx-footer">
+  <div class="nx-container nx-footer-inner">
+    <span>© <span id="year"></span> NEXORY. All rights reserved.</span>
+    <span class="nx-footer-meta">AI • Logistics • Ecosystem • IT</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const burger = document.querySelector(".nx-burger");
+  const nav = document.querySelector(".nx-nav");
+  if (burger) {
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("is-open");
+      nav.classList.toggle("is-open");
+    });
+  }
+</script>
+
+</body>
+</html>
+

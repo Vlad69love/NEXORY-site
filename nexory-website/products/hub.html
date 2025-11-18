@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORY Nexus — Integrations Hub</title>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/theme-nexory.css" />
+</head>
+<body>
+  <!-- HEADER для вложенных страниц -->
+  <header class="nx-header">
+    <div class="nx-container nx-header-inner">
+      <a href="../index.html" class="nx-brand">
+        <img src="../assets/img/logo/nexory-logo.png" alt="NEXORY logo" class="nx-logo" />
+        <span class="nx-brand-text">NEXORY</span>
+      </a>
+
+      <nav class="nx-nav">
+        <a href="../index.html#about" class="nx-nav-link">About</a>
+        <a href="../index.html#ecosystem" class="nx-nav-link">Ecosystem</a>
+        <a href="../products/index.html" class="nx-nav-link">Products</a>
+        <a href="../platform/index.html" class="nx-nav-link">Platform</a>
+        <a href="../index.html#contact" class="nx-nav-link nx-nav-link--accent">Contact</a>
+      </nav>
+
+      <button class="nx-burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="nx-page-hero">
+    <div class="nx-container">
+      <div class="nx-breadcrumbs">
+        <a href="../index.html">Home</a> &nbsp;•&nbsp;
+        <a href="./index.html">Products</a> &nbsp;•&nbsp;
+        <span>NEXORY Nexus</span>
+      </div>
+      <h1 class="nx-page-title">NEXORY Nexus (Integrations Hub)</h1>
+      <p class="nx-page-subtitle nx-section-text">
+        Integrations hub that connects ELDs, factoring, broker portals, TMS and internal
+        tools into a single, consistent data flow.
+      </p>
+      <div class="nx-tags">
+        <span class="nx-tag">Integrations</span>
+        <span class="nx-tag">Data hub</span>
+        <span class="nx-tag">APIs</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main>
+    <section class="nx-page-section">
+      <div class="nx-container nx-grid-2">
+        <div>
+          <h2 class="nx-section-title">Why Nexus matters</h2>
+          <p class="nx-section-text">
+            Most logistics stacks are a patchwork of systems: ELD platforms, broker portals,
+            spreadsheets, legacy TMS, factoring portals. Nexus is the idea of one hub that
+            standardizes and syncs data between them.
+          </p>
+
+          <ul class="nx-list">
+            <li>Single source of truth for loads, docs and events.</li>
+            <li>Unified identity for drivers, trucks, trailers and clients.</li>
+            <li>Less manual re-entry and copy-paste work.</li>
+            <li>Stronger base for analytics and AI.</li>
+          </ul>
+        </div>
+
+        <div class="nx-card nx-card-soft">
+          <h3 class="nx-card-title">Types of integrations</h3>
+          <p class="nx-card-text">
+            NEXORY Nexus is open by design. It can start simple (CSV / Google Sheets sync) and
+            gradually adopt proper APIs, webhooks and direct integrations.
+          </p>
+          <div class="nx-badge-grid" style="margin-top: 10px;">
+            <span class="nx-badge">ELD / GPS providers (future)</span>
+            <span class="nx-badge">Factoring portals & docs</span>
+            <span class="nx-badge">Broker load boards & portals</span>
+            <span class="nx-badge">Custom internal tools</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nx-page-section nx-section-alt">
+      <div class="nx-container nx-grid-2">
+        <div class="nx-card">
+          <h3 class="nx-card-title">MVP integration approach</h3>
+          <p class="nx-card-text">
+            Early on, Nexus doesn't have to be a huge infrastructure. It can start as a lightweight
+            service that imports/exports data on a schedule or on demand.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Google Sheets + API sync</li>
+            <li>Export/import CSVs from external portals</li>
+            <li>Simple REST endpoints for internal tools</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="nx-card-title">Future vision</h3>
+          <p class="nx-section-text">
+            Long term, Nexus can become the backbone for all data and integrations in the NEXORY
+            universe — including external partners and 3rd-party apps.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Webhook-based real-time event bus</li>
+            <li>Partner API for external developers</li>
+            <li>Permissions and scopes for data access</li>
+          </ul>
+          <a href="../platform/index.html" class="nx-btn nx-btn-primary" style="margin-top: 12px;">
+            Explore platform map
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="nx-footer">
+    <div class="nx-container nx-footer-inner">
+      <span>© <span id="year"></span> NEXORY. All rights reserved.</span>
+      <span class="nx-footer-meta">AI • Logistics • Ecosystem • IT</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const burger = document.querySelector(".nx-burger");
+    const nav = document.querySelector(".nx-nav");
+    if (burger) {
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("is-open");
+        nav.classList.toggle("is-open");
+      });
+    }
+  </script>
+</body>
+</html>
+
+

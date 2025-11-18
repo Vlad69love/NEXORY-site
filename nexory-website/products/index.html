@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORY Products — Ecosystem Modules</title>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/theme-nexory.css" />
+</head>
+<body>
+  <!-- HEADER  -->
+
+  <header class="nx-header">
+  <div class="nx-container nx-header-inner">
+    <a href="../index.html" class="nx-brand">
+      <img src="../assets/img/logo/nexory-logo.png" alt="NEXORY logo" class="nx-logo" />
+      <span class="nx-brand-text">NEXORY</span>
+    </a>
+
+    <nav class="nx-nav">
+      <a href="../index.html#about" class="nx-nav-link">About</a>
+      <a href="../index.html#ecosystem" class="nx-nav-link">Ecosystem</a>
+      <a href="../products/index.html" class="nx-nav-link">Products</a>
+      <a href="../platform/index.html" class="nx-nav-link">Platform</a>
+      <a href="../index.html#contact" class="nx-nav-link nx-nav-link--accent">Contact</a>
+    </nav>
+
+    <button class="nx-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+
+  <!-- PAGE HERO -->
+  <section class="nx-page-hero">
+    <div class="nx-container">
+      <div class="nx-breadcrumbs">
+        <a href="../index.html">Home</a> &nbsp;•&nbsp; <span>Products</span>
+      </div>
+      <h1 class="nx-page-title">NEXORY Products</h1>
+      <p class="nx-page-subtitle nx-section-text">
+        Four core modules form the backbone of the NEXORY ecosystem. Each can grow into an
+        independent product or work together as one platform.
+      </p>
+      <div class="nx-tags">
+        <span class="nx-tag">Driver experience</span>
+        <span class="nx-tag">Dispatch & operations</span>
+        <span class="nx-tag">AI intelligence layer</span>
+        <span class="nx-tag">Integrations hub</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS GRID -->
+  <main>
+    <section class="nx-page-section">
+      <div class="nx-container nx-solutions-grid">
+        <!-- Driver App -->
+        <article class="nx-card">
+          <h2 class="nx-card-title">NEXORY Driver</h2>
+          <p class="nx-card-text">
+            Mobile-first companion for drivers: trips, documents, photos, POD, safety, check-in/out
+            and communication — all inside one app.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Trip list, load details, addresses</li>
+            <li>Photo capture: BOL, POD, damage</li>
+            <li>Check-in / check-out with timestamps</li>
+            <li>Basic statistics: miles, trips, payouts</li>
+          </ul>
+          <a href="./driver-app.html" class="nx-btn nx-btn-ghost" style="margin-top: 10px;">
+            View module
+          </a>
+        </article>
+
+        <!-- Dispatch -->
+        <article class="nx-card">
+          <h2 class="nx-card-title">NEXORY Dispatch</h2>
+          <p class="nx-card-text">
+            Web control center for dispatchers and operations teams. Loads, routes, drivers,
+            brokers, chat and exceptions in one interface.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Load board & status tracking</li>
+            <li>Driver assignment and ETA overview</li>
+            <li>Requests: safety, claims, maintenance</li>
+            <li>Communication with drivers and brokers</li>
+          </ul>
+          <a href="./dispatch.html" class="nx-btn nx-btn-ghost" style="margin-top: 10px;">
+            View module
+          </a>
+        </article>
+
+        <!-- AI Core -->
+        <article class="nx-card">
+          <h2 class="nx-card-title">NEXORY AI Core</h2>
+          <p class="nx-card-text">
+            Intelligence layer for the whole ecosystem: smart routing, anomaly detection,
+            suggestions and document automation.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>AI assistant for dispatch & operations</li>
+            <li>Auto-extraction from documents & photos</li>
+            <li>Recommendations and alerts</li>
+            <li>Data layer for analytics</li>
+          </ul>
+          <a href="./ai-core.html" class="nx-btn nx-btn-ghost" style="margin-top: 10px;">
+            View module
+          </a>
+        </article>
+
+        <!-- Nexus / Hub -->
+        <article class="nx-card">
+          <h2 class="nx-card-title">NEXORY Nexus (Integrations Hub)</h2>
+          <p class="nx-card-text">
+            Connects external systems — ELD, factoring, TMS, broker portals — and consolidates data
+            into one flow.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>ELD & GPS integrations (future)</li>
+            <li>Factoring & document flow</li>
+            <li>Broker platforms & load sources</li>
+            <li>Unified API for internal tools</li>
+          </ul>
+          <a href="./hub.html" class="nx-btn nx-btn-ghost" style="margin-top: 10px;">
+            View module
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER  -->
+ <footer class="nx-footer">
+  <div class="nx-container nx-footer-inner">
+    <span>© <span id="year"></span> NEXORY. All rights reserved.</span>
+    <span class="nx-footer-meta">AI • Logistics • Ecosystem • IT</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const burger = document.querySelector(".nx-burger");
+  const nav = document.querySelector(".nx-nav");
+  if (burger) {
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("is-open");
+      nav.classList.toggle("is-open");
+    });
+  }
+</script>
+
+</body>
+</html>
+
+

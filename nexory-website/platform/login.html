@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORY Platform — Login</title>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/theme-nexory.css" />
+</head>
+<body class="nx-login-body">
+  
+  <!-- HEADER -->
+  <header class="nx-header">
+    <div class="nx-container nx-header-inner">
+      <a href="../index.html" class="nx-brand">
+        <img src="../assets/img/logo/nexory-logo.png" alt="NEXORY logo" class="nx-logo" />
+        <span class="nx-brand-text">NEXORY</span>
+      </a>
+
+      <nav class="nx-nav">
+        <a href="../index.html#about" class="nx-nav-link">About</a>
+        <a href="../index.html#ecosystem" class="nx-nav-link">Ecosystem</a>
+        <a href="../products/index.html" class="nx-nav-link">Products</a>
+        <a href="../platform/index.html" class="nx-nav-link">Platform</a>
+        <a href="../index.html#contact" class="nx-nav-link nx-nav-link--accent">Contact</a>
+      </nav>
+
+      <button class="nx-burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- LOGIN CARD -->
+  <section class="nx-login-wrapper">
+    <div class="nx-login-card">
+      <h1 class="nx-login-title">Welcome to NEXORY Platform</h1>
+      <p class="nx-login-subtitle">Login to access dashboard and operations modules</p>
+
+      <form class="nx-login-form" id="login-form">
+        <div class="nx-field">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="nx-field">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="••••••••" required />
+        </div>
+
+        <button type="submit" class="nx-btn nx-btn-primary nx-btn-full">
+          Login
+        </button>
+
+        <p class="nx-login-note" id="login-status">
+          * This is a mock login — for demo purposes only
+        </p>
+      </form>
+
+      <div class="nx-auth-extra">
+        <span>Don’t have an account yet?</span>
+        <a href="../index.html#contact">Request access / Register</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="nx-footer">
+    <div class="nx-container nx-footer-inner">
+      <span>© <span id="year"></span> NEXORY. All rights reserved.</span>
+      <span class="nx-footer-meta">AI • Logistics • Ecosystem • IT</span>
+    </div>
+  </footer>
+
+  <script>
+    // Год в футере
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Бургер-меню
+    const burger = document.querySelector(".nx-burger");
+    const nav = document.querySelector(".nx-nav");
+    if (burger) {
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("is-open");
+        nav.classList.toggle("is-open");
+      });
+    }
+
+    // Логика логина (mock)
+    const loginForm = document.getElementById("login-form");
+    const loginStatus = document.getElementById("login-status");
+
+    if (loginForm) {
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!email || !password) {
+          loginStatus.textContent = "Please enter email and password.";
+          loginStatus.style.color = "#ff5252";
+          return;
+        }
+
+        // Здесь в будущем будет реальный API.
+        loginStatus.textContent = "Logging in...";
+        loginStatus.style.color = "#0ddcff";
+
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 400);
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+

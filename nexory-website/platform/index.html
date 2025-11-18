@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORY Platform — Dashboard foundation</title>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/theme-nexory.css" />
+</head>
+<body>
+  <!-- HEADER  -->
+ <header class="nx-header">
+  <div class="nx-container nx-header-inner">
+    <a href="../index.html" class="nx-brand">
+      <img src="../assets/img/logo/nexory-logo.png" alt="NEXORY logo" class="nx-logo" />
+      <span class="nx-brand-text">NEXORY</span>
+    </a>
+
+    <nav class="nx-nav">
+      <a href="../index.html#about" class="nx-nav-link">About</a>
+      <a href="../index.html#ecosystem" class="nx-nav-link">Ecosystem</a>
+      <a href="../products/index.html" class="nx-nav-link">Products</a>
+      <a href="../platform/index.html" class="nx-nav-link">Platform</a>
+      <a href="../index.html#contact" class="nx-nav-link nx-nav-link--accent">Contact</a>
+    </nav>
+
+    <button class="nx-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+
+
+  <!-- HERO -->
+  <section class="nx-page-hero">
+    <div class="nx-container">
+      <div class="nx-breadcrumbs">
+        <a href="../index.html">Home</a> &nbsp;•&nbsp; <span>Platform</span>
+      </div>
+      <h1 class="nx-page-title">NEXORY Platform</h1>
+      <p class="nx-page-subtitle nx-section-text">
+        Web foundation for the future NEXORY dashboard — the place where loads, drivers, requests
+        and data meet in one interface.
+      </p>
+      <div class="nx-tags">
+        <span class="nx-tag">Web dashboard</span>
+        <span class="nx-tag">MVP-ready skeleton</span>
+        <span class="nx-tag">Future SaaS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main>
+    <section class="nx-page-section">
+      <div class="nx-container nx-grid-2">
+        <div>
+          <h2 class="nx-section-title">What the platform will host</h2>
+          <p class="nx-section-text">
+            Today this page works as a concept. Later it can become the entry point for a real
+            dashboard with auth, roles and modules connected to NEXORY ecosystem.
+          </p>
+          <ul class="nx-list">
+            <li>Dispatcher dashboard with live loads & drivers</li>
+            <li>Request center for safety, claims, maintenance</li>
+            <li>Document view and approvals</li>
+            <li>Analytics & KPIs for operations</li>
+          </ul>
+        </div>
+
+        <div class="nx-card nx-card-soft">
+          <h3 class="nx-card-title">Future architecture (high level)</h3>
+          <div class="nx-badge-grid" style="margin-top: 10px;">
+            <span class="nx-badge">Next.js / React frontend</span>
+            <span class="nx-badge">API backend (Python / Node)</span>
+            <span class="nx-badge">Auth (JWT / OAuth)</span>
+            <span class="nx-badge">Integration with NEXORY AI Core</span>
+          </div>
+          <p class="nx-card-text" style="margin-top: 10px;">
+            On this static version we simply reserve the routes and design language. Later developers
+            can plug logic into the same structure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+   <section class="nx-page-section nx-section-alt">
+  <div class="nx-container nx-grid-2">
+    <div class="nx-card">
+      <h3 class="nx-card-title">Login & dashboard placeholders</h3>
+      <p class="nx-card-text">
+        We can create simple static pages that imitate login and dashboard views. They will not
+        have backend yet, but will show visual direction for the future platform.
+      </p>
+      <ul class="nx-list nx-list-tight">
+        <li><code>/platform/login.html</code> — login screen mock</li>
+        <li><code>/platform/dashboard.html</code> — dashboard mock</li>
+      </ul>
+      <a href="./login.html" class="nx-btn nx-btn-primary" style="margin-top: 12px;">
+        Go to login
+      </a>
+    </div>
+    <div>
+      <h3 class="nx-card-title">Collaborators & devs</h3>
+      <p class="nx-section-text">
+        This page explains the target platform to developers and potential tech partners. It
+        gives enough detail to start discussing stack, modules and releases — without exposing
+        any sensitive logic.
+      </p>
+      <a href="../index.html#contact" class="nx-btn nx-btn-ghost" style="margin-top: 12px;">
+        Propose collaboration
+      </a>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <!-- FOOTER  -->
+  <footer class="nx-footer">
+  <div class="nx-container nx-footer-inner">
+    <span>© <span id="year"></span> NEXORY. All rights reserved.</span>
+    <span class="nx-footer-meta">AI • Logistics • Ecosystem • IT</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const burger = document.querySelector(".nx-burger");
+  const nav = document.querySelector(".nx-nav");
+  if (burger) {
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("is-open");
+      nav.classList.toggle("is-open");
+    });
+  }
+</script>
+
+</body>
+</html>
+

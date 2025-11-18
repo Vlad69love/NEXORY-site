@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORY Dispatch — Control center for operations</title>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/theme-nexory.css" />
+</head>
+<body>
+  <!-- HEADER для вложенных страниц -->
+  <header class="nx-header">
+    <div class="nx-container nx-header-inner">
+      <a href="../index.html" class="nx-brand">
+        <img src="../assets/img/logo/nexory-logo.png" alt="NEXORY logo" class="nx-logo" />
+        <span class="nx-brand-text">NEXORY</span>
+      </a>
+
+      <nav class="nx-nav">
+        <a href="../index.html#about" class="nx-nav-link">About</a>
+        <a href="../index.html#ecosystem" class="nx-nav-link">Ecosystem</a>
+        <a href="../products/index.html" class="nx-nav-link">Products</a>
+        <a href="../platform/index.html" class="nx-nav-link">Platform</a>
+        <a href="../index.html#contact" class="nx-nav-link nx-nav-link--accent">Contact</a>
+      </nav>
+
+      <button class="nx-burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="nx-page-hero">
+    <div class="nx-container">
+      <div class="nx-breadcrumbs">
+        <a href="../index.html">Home</a> &nbsp;•&nbsp;
+        <a href="./index.html">Products</a> &nbsp;•&nbsp;
+        <span>NEXORY Dispatch</span>
+      </div>
+      <h1 class="nx-page-title">NEXORY Dispatch</h1>
+      <p class="nx-page-subtitle nx-section-text">
+        Web control center for dispatchers and operations teams — loads, routes, drivers,
+        brokers and requests inside a single interface.
+      </p>
+      <div class="nx-tags">
+        <span class="nx-tag">Dispatch & operations</span>
+        <span class="nx-tag">Web dashboard</span>
+        <span class="nx-tag">Request center</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <main>
+    <section class="nx-page-section">
+      <div class="nx-container nx-grid-2">
+        <div>
+          <h2 class="nx-section-title">Operational cockpit</h2>
+          <p class="nx-section-text">
+            NEXORY Dispatch is built as a cockpit view for operations. Loads, drivers, ETAs,
+            exceptions and conversations live in one place instead of jumping between tabs
+            and chats.
+          </p>
+
+          <ul class="nx-list">
+            <li><strong>Load board:</strong> list of active and upcoming loads with statuses.</li>
+            <li><strong>Driver view:</strong> who is under load, empty, resting, delayed.</li>
+            <li><strong>Timeline:</strong> pickups, deliveries, appointments, time windows.</li>
+            <li><strong>Requests:</strong> safety, claims, maintenance, accounting tickets.</li>
+            <li><strong>Communication:</strong> link to bots, chats, email or SMS flows.</li>
+          </ul>
+        </div>
+
+        <div class="nx-card nx-card-soft">
+          <h3 class="nx-card-title">Connected to NEXORY Driver</h3>
+          <p class="nx-card-text">
+            The dispatch panel is designed to be synced with NEXORY Driver. Statuses, check-in/out,
+            PODs and photos appear directly in the dashboard without manual forwarding.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Real-time trip status from the driver app</li>
+            <li>Instant document and photo uploads</li>
+            <li>Requests initiated by the driver (fuel, breakdown, etc.)</li>
+            <li>Unified history of each load and driver</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="nx-page-section nx-section-alt">
+      <div class="nx-container nx-grid-2">
+        <div class="nx-card">
+          <h3 class="nx-card-title">Request center</h3>
+          <p class="nx-card-text">
+            One of the core ideas is to bring all “help me” signals into a single request center:
+            safety issues, claims, maintenance, fuel, documents, accounting questions.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Structured requests instead of chaotic chat messages</li>
+            <li>Clear ownership: who took the ticket, who closed it</li>
+            <li>History and context for every incident</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="nx-card-title">Future evolution</h3>
+          <p class="nx-section-text">
+            At MVP level, NEXORY Dispatch can start as a simple web interface connected to a
+            lightweight backend or even Google Sheets. Over time it can grow into a full TMS
+            core with planning, rating and analytics.
+          </p>
+          <ul class="nx-list nx-list-tight">
+            <li>Deeper planning and routing logic</li>
+            <li>Integration with NEXORY AI Core for suggestions</li>
+            <li>Advanced filters, tags, and SLA tracking</li>
+          </ul>
+          <a href="../platform/index.html" class="nx-btn nx-btn-primary" style="margin-top: 12px;">
+            See platform direction
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="nx-footer">
+    <div class="nx-container nx-footer-inner">
+      <span>© <span id="year"></span> NEXORY. All rights reserved.</span>
+      <span class="nx-footer-meta">AI • Logistics • Ecosystem • IT</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const burger = document.querySelector(".nx-burger");
+    const nav = document.querySelector(".nx-nav");
+    if (burger) {
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("is-open");
+        nav.classList.toggle("is-open");
+      });
+    }
+  </script>
+</body>
+</html>
+
+

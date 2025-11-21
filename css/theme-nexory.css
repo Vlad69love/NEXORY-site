@@ -1131,3 +1131,55 @@ p {
     margin: 0 10px;
   }
 }
+
+
+/* Date inputs: white calendar icon for dark background */
+.nx-field input[type="date"] {
+  color-scheme: dark;
+}
+
+.nx-field input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.9;
+}
+
+/* Custom file input button */
+.nx-field input[type="file"] {
+  font-size: 0.9rem;
+}
+
+.nx-field input[type="file"]::file-selector-button {
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-right: 10px;
+  background: linear-gradient(135deg, #0ddcff, #25ffaa);
+  color: #050814;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.nx-field input[type="file"]::file-selector-button:hover {
+  box-shadow: 0 0 14px rgba(13, 220, 255, 0.4);
+  opacity: 0.95;
+}
+
+.nx-field input[type="file"]::file-selector-button:active {
+  transform: scale(0.97);
+}
+
+/* Document badge in tables */
+.nx-doc-pill {
+  display: inline-flex;
+  align-items: center;
+  max-width: 180px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(13, 220, 255, 0.14);
+  border: 1px solid rgba(13, 220, 255, 0.5);
+  font-size: 0.75rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

@@ -31,84 +31,199 @@
     </div>
   </header>
 
-
   <!-- DASHBOARD HEADER -->
   <section class="nx-dashboard-header">
     <div class="nx-container">
       <h1 class="nx-dashboard-title">Dashboard</h1>
-      <p class="nx-dashboard-subtitle">Live overview of loads, drivers and requests</p>
+      <p class="nx-dashboard-subtitle">Live overview of loads, drivers and requests (demo mode)</p>
 
       <div class="nx-dashboard-nav">
-        <a href="#" class="nx-dash-tab nx-dash-tab--active">Overview</a>
-        <a href="#" class="nx-dash-tab">Loads</a>
-        <a href="#" class="nx-dash-tab">Drivers</a>
-        <a href="#" class="nx-dash-tab">Requests</a>
-        <a href="#" class="nx-dash-tab">Documents</a>
-        <a href="#" class="nx-dash-tab">Settings</a>
+        <a href="#" class="nx-dash-tab nx-dash-tab--active" data-tab="overview">Overview</a>
+        <a href="#" class="nx-dash-tab" data-tab="loads">Loads</a>
+        <a href="#" class="nx-dash-tab" data-tab="drivers">Drivers</a>
+        <a href="#" class="nx-dash-tab" data-tab="requests">Requests</a>
+        <a href="#" class="nx-dash-tab" data-tab="documents">Documents</a>
+        <a href="#" class="nx-dash-tab" data-tab="settings">Settings</a>
       </div>
     </div>
   </section>
 
-
-  <!-- DASHBOARD GRID -->
+  <!-- DASHBOARD CONTENT -->
   <main>
     <section class="nx-page-section">
-      <div class="nx-container nx-dashboard-grid">
+      <div class="nx-container">
 
-        <!-- CARD: Active Loads -->
-        <div class="nx-card nx-card-soft">
-          <h3 class="nx-card-title">Active Loads</h3>
-          <p class="nx-card-text">Overview of loads currently in progress.</p>
-          <ul class="nx-list nx-list-tight">
-            <li>ETAs, pickup/delivery windows</li>
-            <li>Driver assignment monitoring</li>
-            <li>Live status updates</li>
-          </ul>
+        <!-- top bar: New Load + hint -->
+        <div class="nx-dashboard-topbar">
+          <button class="nx-btn nx-btn-primary" id="new-load-btn">+ New Load</button>
+          <span class="nx-dashboard-hint">
+            Demo only: loads are stored in your browser memory and reset on refresh.
+          </span>
         </div>
 
-        <!-- CARD: Drivers -->
-        <div class="nx-card nx-card-soft">
-          <h3 class="nx-card-title">Drivers Overview</h3>
-          <p class="nx-card-text">
-            Who is under load, who is empty, who is delayed — simple real-time indicators.
-          </p>
-          <ul class="nx-list nx-list-tight">
-            <li>Status tracking</li>
-            <li>Communication shortcuts</li>
-            <li>Driver logs & history</li>
-          </ul>
-        </div>
+        <!-- Panels -->
+        <div class="nx-dashboard-panels">
 
-        <!-- CARD: Requests -->
-        <div class="nx-card nx-card-soft">
-          <h3 class="nx-card-title">Request Center</h3>
-          <p class="nx-card-text">
-            All safety, claims, maintenance and accounting tickets in one interface.
-          </p>
-          <ul class="nx-list nx-list-tight">
-            <li>Ownership + SLA tracking</li>
-            <li>Photos, docs, timestamps</li>
-            <li>Driver-submitted issues</li>
-          </ul>
-        </div>
+          <!-- OVERVIEW PANEL -->
+          <div class="nx-dashboard-panel is-active" data-panel="overview">
+            <h2 class="nx-section-title">Overview</h2>
+            <p class="nx-section-text">
+              Quick view of manually added loads. Use <strong>New Load</strong> to create a record
+              and see it appear in this table.
+            </p>
 
-        <!-- CARD: Documents -->
-        <div class="nx-card nx-card-soft">
-          <h3 class="nx-card-title">Documents & Photos</h3>
-          <p class="nx-card-text">
-            Pipeline for incoming PODs, BOLs, ratecons, invoices and damage photos.
-          </p>
-          <ul class="nx-list nx-list-tight">
-            <li>Document processing queue</li>
-            <li>Tagging, sorting, extraction</li>
-            <li>Preview and verification</li>
-          </ul>
-        </div>
+            <div class="nx-table-wrapper">
+              <table class="nx-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Load ID</th>
+                    <th>Pickup → Delivery</th>
+                    <th>Driver</th>
+                    <th>Truck</th>
+                    <th>Status</th>
+                    <th>Document</th>
+                  </tr>
+                </thead>
+                <tbody id="loads-table-body">
+                  <!-- rows will be injected here -->
+                </tbody>
+              </table>
+              <p class="nx-table-empty" id="loads-empty-state">
+                No loads yet. Click <strong>New Load</strong> to add the first one.
+              </p>
+            </div>
+          </div>
 
+          <!-- LOADS PANEL (пока просто пояснение) -->
+          <div class="nx-dashboard-panel" data-panel="loads">
+            <h2 class="nx-section-title">Loads</h2>
+            <p class="nx-section-text">
+              In this demo, all loads you create via <strong>New Load</strong> are visible in the
+              <strong>Overview</strong> table. This section is reserved for a deeper load view in the
+              future (filters, map, timeline, etc.).
+            </p>
+          </div>
+
+          <!-- DRIVERS PANEL (placeholder) -->
+          <div class="nx-dashboard-panel" data-panel="drivers">
+            <h2 class="nx-section-title">Drivers</h2>
+            <p class="nx-section-text">
+              For now driver information is stored inside each load (name &amp; truck). In a real
+              platform this area would contain a full driver list, statuses and history.
+            </p>
+          </div>
+
+          <!-- REQUESTS PANEL (placeholder) -->
+          <div class="nx-dashboard-panel" data-panel="requests">
+            <h2 class="nx-section-title">Requests</h2>
+            <p class="nx-section-text">
+              Request center (safety, claims, maintenance, accounting) can be plugged here later.
+              In this demo we only focus on manual load creation.
+            </p>
+          </div>
+
+          <!-- DOCUMENTS PANEL (placeholder) -->
+          <div class="nx-dashboard-panel" data-panel="documents">
+            <h2 class="nx-section-title">Documents</h2>
+            <p class="nx-section-text">
+              Each load can have one attached document (ratecon, BOL, POD). In this demo we store
+              only the file name and show it in the overview table.
+            </p>
+          </div>
+
+          <!-- SETTINGS PANEL (placeholder) -->
+          <div class="nx-dashboard-panel" data-panel="settings">
+            <h2 class="nx-section-title">Settings</h2>
+            <p class="nx-section-text">
+              Future area for roles, permissions, notification rules and integrations.
+            </p>
+          </div>
+
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- MODAL: NEW LOAD -->
+  <div class="nx-modal-backdrop" id="load-modal">
+    <div class="nx-modal" role="dialog" aria-modal="true" aria-labelledby="load-modal-title">
+      <div class="nx-modal-header">
+        <h2 id="load-modal-title">New Load (demo)</h2>
+        <button class="nx-modal-close" type="button" id="load-modal-close" aria-label="Close">
+          &times;
+        </button>
+      </div>
+
+      <form id="load-form" class="nx-modal-body">
+        <div class="nx-field-row">
+          <div class="nx-field">
+            <label for="load-id">Load ID</label>
+            <input id="load-id" name="loadId" type="text" placeholder="e.g. NXR-1001" required />
+          </div>
+          <div class="nx-field">
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="Planned">Planned</option>
+              <option value="Dispatched">Dispatched</option>
+              <option value="In transit">In transit</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="nx-field-row">
+          <div class="nx-field">
+            <label for="pickup">Pickup location</label>
+            <input id="pickup" name="pickup" type="text" placeholder="City, ST" required />
+          </div>
+          <div class="nx-field">
+            <label for="delivery">Delivery location</label>
+            <input id="delivery" name="delivery" type="text" placeholder="City, ST" required />
+          </div>
+        </div>
+
+        <div class="nx-field-row">
+          <div class="nx-field">
+            <label for="pickup-date">Pickup date</label>
+            <input id="pickup-date" name="pickupDate" type="date" />
+          </div>
+          <div class="nx-field">
+            <label for="delivery-date">Delivery date</label>
+            <input id="delivery-date" name="deliveryDate" type="date" />
+          </div>
+        </div>
+
+        <div class="nx-field-row">
+          <div class="nx-field">
+            <label for="driver">Driver name</label>
+            <input id="driver" name="driver" type="text" placeholder="e.g. Adam Foster" />
+          </div>
+          <div class="nx-field">
+            <label for="truck">Truck #</label>
+            <input id="truck" name="truck" type="text" placeholder="e.g. 123456" />
+          </div>
+        </div>
+
+        <div class="nx-field">
+          <label for="document">Document (ratecon / BOL / POD)</label>
+          <input id="document" name="document" type="file" />
+          <p class="nx-field-hint">
+            In this demo file is not uploaded to a server — we only keep the file name in memory.
+          </p>
+        </div>
+
+        <div class="nx-modal-footer">
+          <button type="button" class="nx-btn nx-btn-ghost" id="load-modal-cancel">
+            Cancel
+          </button>
+          <button type="submit" class="nx-btn nx-btn-primary">
+            Save load
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="nx-footer">
@@ -119,7 +234,10 @@
   </footer>
 
   <script>
+    // Year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Burger menu
     const burger = document.querySelector(".nx-burger");
     const nav = document.querySelector(".nx-nav");
     if (burger) {
@@ -128,9 +246,124 @@
         nav.classList.toggle("is-open");
       });
     }
-  </script>
 
+    // Simple tab system
+    const tabs = document.querySelectorAll(".nx-dash-tab");
+    const panels = document.querySelectorAll(".nx-dashboard-panel");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = tab.dataset.tab;
+        if (!target) return;
+
+        tabs.forEach((t) => t.classList.remove("nx-dash-tab--active"));
+        tab.classList.add("nx-dash-tab--active");
+
+        panels.forEach((panel) => {
+          panel.classList.toggle(
+            "is-active",
+            panel.dataset.panel === target
+          );
+        });
+      });
+    });
+
+    // Modal logic
+    const newLoadBtn = document.getElementById("new-load-btn");
+    const modal = document.getElementById("load-modal");
+    const closeBtn = document.getElementById("load-modal-close");
+    const cancelBtn = document.getElementById("load-modal-cancel");
+    const loadForm = document.getElementById("load-form");
+
+    function openModal() {
+      modal.classList.add("is-open");
+      document.body.classList.add("nx-modal-open");
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      document.body.classList.remove("nx-modal-open");
+      if (loadForm) loadForm.reset();
+    }
+
+    if (newLoadBtn) newLoadBtn.addEventListener("click", openModal);
+    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // In-memory loads store
+    const loads = [];
+    const tableBody = document.getElementById("loads-table-body");
+    const emptyState = document.getElementById("loads-empty-state");
+
+    function renderLoads() {
+      if (!tableBody) return;
+      tableBody.innerHTML = "";
+
+      if (!loads.length) {
+        emptyState.style.display = "block";
+        return;
+      }
+
+      emptyState.style.display = "none";
+
+      loads.forEach((load, index) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${load.loadId || "—"}</td>
+          <td>
+            <div class="nx-cell-main">${load.pickup || "—"} → ${load.delivery || "—"}</div>
+            <div class="nx-cell-sub">
+              ${load.pickupDate || "?"} — ${load.deliveryDate || "?"}
+            </div>
+          </td>
+          <td>${load.driver || "—"}</td>
+          <td>${load.truck || "—"}</td>
+          <td><span class="nx-status-pill nx-status-${(load.status || "Planned").toLowerCase().replace(/\s+/g, "-")}">
+            ${load.status || "Planned"}
+          </span></td>
+          <td>${load.documentName || "—"}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    if (loadForm) {
+      loadForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(loadForm);
+        const fileInput = document.getElementById("document");
+        const file = fileInput && fileInput.files && fileInput.files[0];
+
+        const load = {
+          loadId: formData.get("loadId") || "",
+          status: formData.get("status") || "Planned",
+          pickup: formData.get("pickup") || "",
+          delivery: formData.get("delivery") || "",
+          pickupDate: formData.get("pickupDate") || "",
+          deliveryDate: formData.get("deliveryDate") || "",
+          driver: formData.get("driver") || "",
+          truck: formData.get("truck") || "",
+          documentName: file ? file.name : ""
+        };
+
+        // добавляем в начало списка
+        loads.unshift(load);
+        renderLoads();
+        closeModal();
+      });
+    }
+
+    // initial render
+    renderLoads();
+  </script>
 </body>
 </html>
-
-

@@ -933,3 +933,201 @@ p {
   }
 }
 
+
+
+/* DASHBOARD extra UI */
+
+.nx-dashboard-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.nx-dashboard-hint {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.nx-dashboard-panels {
+  margin-top: 10px;
+}
+
+.nx-dashboard-panel {
+  display: none;
+}
+
+.nx-dashboard-panel.is-active {
+  display: block;
+}
+
+.nx-table-wrapper {
+  margin-top: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.nx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.nx-table thead {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nx-table th,
+.nx-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: left;
+}
+
+.nx-table th {
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.nx-table tr:last-child td {
+  border-bottom: none;
+}
+
+.nx-table-empty {
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.nx-cell-main {
+  font-weight: 500;
+}
+
+.nx-cell-sub {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* status pills */
+
+.nx-status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.nx-status-planned {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.nx-status-dispatched {
+  background: rgba(13, 220, 255, 0.18);
+  color: #0ddcff;
+}
+
+.nx-status-in-transit {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.nx-status-delivered {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+/* modal */
+
+.nx-modal-open {
+  overflow: hidden;
+}
+
+.nx-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 6, 15, 0.85);
+  backdrop-filter: blur(14px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.nx-modal-backdrop.is-open {
+  display: flex;
+}
+
+.nx-modal {
+  width: 100%;
+  max-width: 720px;
+  background: radial-gradient(circle at top left, rgba(13, 220, 255, 0.16), transparent 55%),
+              rgba(10, 13, 25, 0.96);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(13, 220, 255, 0.25);
+  padding: 20px 22px 18px;
+}
+
+.nx-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.nx-modal-header h2 {
+  font-size: 1.3rem;
+}
+
+.nx-modal-close {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 4px;
+}
+
+.nx-modal-body {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.nx-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.nx-field-hint {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.nx-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+  .nx-field-row {
+    grid-template-columns: 1fr;
+  }
+  .nx-modal {
+    max-width: 100%;
+    margin: 0 10px;
+  }
+}

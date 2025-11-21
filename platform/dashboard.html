@@ -35,7 +35,9 @@
   <section class="nx-dashboard-header">
     <div class="nx-container">
       <h1 class="nx-dashboard-title">Dashboard</h1>
-      <p class="nx-dashboard-subtitle">Live overview of loads, drivers and requests (demo mode)</p>
+      <p class="nx-dashboard-subtitle">
+        Demo dashboard: manage loads and drivers directly in your browser (no backend yet).
+      </p>
 
       <div class="nx-dashboard-nav">
         <a href="#" class="nx-dash-tab nx-dash-tab--active" data-tab="overview">Overview</a>
@@ -57,7 +59,7 @@
         <div class="nx-dashboard-topbar">
           <button class="nx-btn nx-btn-primary" id="new-load-btn">+ New Load</button>
           <span class="nx-dashboard-hint">
-            Demo only: loads are stored in your browser memory and reset on refresh.
+            Demo only: all data is stored in memory and resets on refresh.
           </span>
         </div>
 
@@ -68,8 +70,8 @@
           <div class="nx-dashboard-panel is-active" data-panel="overview">
             <h2 class="nx-section-title">Overview</h2>
             <p class="nx-section-text">
-              Quick view of manually added loads. Use <strong>New Load</strong> to create a record
-              and see it appear in this table.
+              Quick view of all loads you create via <strong>New Load</strong>. Drivers and trucks are
+              linked to each load.
             </p>
 
             <div class="nx-table-wrapper">
@@ -85,41 +87,82 @@
                     <th>Document</th>
                   </tr>
                 </thead>
-                <tbody id="loads-table-body">
-                  <!-- rows will be injected here -->
+                <tbody id="loads-table-overview">
+                  <!-- rows injected via JS -->
                 </tbody>
               </table>
-              <p class="nx-table-empty" id="loads-empty-state">
+              <p class="nx-table-empty" id="loads-empty-overview">
                 No loads yet. Click <strong>New Load</strong> to add the first one.
               </p>
             </div>
           </div>
 
-          <!-- LOADS PANEL (пока просто пояснение) -->
+          <!-- LOADS PANEL -->
           <div class="nx-dashboard-panel" data-panel="loads">
             <h2 class="nx-section-title">Loads</h2>
             <p class="nx-section-text">
-              In this demo, all loads you create via <strong>New Load</strong> are visible in the
-              <strong>Overview</strong> table. This section is reserved for a deeper load view in the
-              future (filters, map, timeline, etc.).
+              Same data as in Overview, reserved for deeper load filters and map in the future.
             </p>
+
+            <div class="nx-table-wrapper">
+              <table class="nx-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Load ID</th>
+                    <th>Pickup</th>
+                    <th>Delivery</th>
+                    <th>Driver</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="loads-table-loads">
+                  <!-- rows injected via JS -->
+                </tbody>
+              </table>
+              <p class="nx-table-empty" id="loads-empty-loads">
+                No loads yet. Use <strong>New Load</strong> to create one.
+              </p>
+            </div>
           </div>
 
-          <!-- DRIVERS PANEL (placeholder) -->
+          <!-- DRIVERS PANEL -->
           <div class="nx-dashboard-panel" data-panel="drivers">
-            <h2 class="nx-section-title">Drivers</h2>
+            <div class="nx-dashboard-topbar" style="margin-top: 0;">
+              <h2 class="nx-section-title" style="margin-bottom: 0;">Drivers</h2>
+              <button class="nx-btn nx-btn-primary" id="new-driver-btn">+ Add new driver</button>
+            </div>
             <p class="nx-section-text">
-              For now driver information is stored inside each load (name &amp; truck). In a real
-              platform this area would contain a full driver list, statuses and history.
+              Drivers created here can be assigned to loads in the <strong>New Load</strong> form.
             </p>
+
+            <div class="nx-table-wrapper">
+              <table class="nx-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>DL number</th>
+                    <th>State</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody id="drivers-table-body">
+                  <!-- drivers injected via JS -->
+                </tbody>
+              </table>
+              <p class="nx-table-empty" id="drivers-empty">
+                No drivers yet. Click <strong>+ Add new driver</strong> to create one.
+              </p>
+            </div>
           </div>
 
           <!-- REQUESTS PANEL (placeholder) -->
           <div class="nx-dashboard-panel" data-panel="requests">
             <h2 class="nx-section-title">Requests</h2>
             <p class="nx-section-text">
-              Request center (safety, claims, maintenance, accounting) can be plugged here later.
-              In this demo we only focus on manual load creation.
+              Future request center for safety, claims, maintenance and accounting workflows. Not active in this demo.
             </p>
           </div>
 
@@ -127,8 +170,7 @@
           <div class="nx-dashboard-panel" data-panel="documents">
             <h2 class="nx-section-title">Documents</h2>
             <p class="nx-section-text">
-              Each load can have one attached document (ratecon, BOL, POD). In this demo we store
-              only the file name and show it in the overview table.
+              Each load can have a linked document (ratecon, BOL, POD). In this demo we keep only file names; file upload will be implemented with backend storage later.
             </p>
           </div>
 
@@ -136,7 +178,7 @@
           <div class="nx-dashboard-panel" data-panel="settings">
             <h2 class="nx-section-title">Settings</h2>
             <p class="nx-section-text">
-              Future area for roles, permissions, notification rules and integrations.
+              Future area for roles, permissions, notification rules and integrations with NEXORY ecosystem.
             </p>
           </div>
 
@@ -196,8 +238,13 @@
 
         <div class="nx-field-row">
           <div class="nx-field">
-            <label for="driver">Driver name</label>
-            <input id="driver" name="driver" type="text" placeholder="e.g. Adam Foster" />
+            <label for="driver-select">Driver</label>
+            <select id="driver-select" name="driverId">
+              <!-- options injected by JS -->
+            </select>
+            <p class="nx-field-hint">
+              Drivers are managed on the <strong>Drivers</strong> tab.
+            </p>
           </div>
           <div class="nx-field">
             <label for="truck">Truck #</label>
@@ -209,7 +256,7 @@
           <label for="document">Document (ratecon / BOL / POD)</label>
           <input id="document" name="document" type="file" />
           <p class="nx-field-hint">
-            In this demo file is not uploaded to a server — we only keep the file name in memory.
+            In this demo file is not uploaded — only file name is stored in memory.
           </p>
         </div>
 
@@ -219,6 +266,62 @@
           </button>
           <button type="submit" class="nx-btn nx-btn-primary">
             Save load
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: NEW DRIVER -->
+  <div class="nx-modal-backdrop" id="driver-modal">
+    <div class="nx-modal" role="dialog" aria-modal="true" aria-labelledby="driver-modal-title">
+      <div class="nx-modal-header">
+        <h2 id="driver-modal-title">Add new driver</h2>
+        <button class="nx-modal-close" type="button" id="driver-modal-close" aria-label="Close">
+          &times;
+        </button>
+      </div>
+
+      <form id="driver-form" class="nx-modal-body">
+        <div class="nx-field-row">
+          <div class="nx-field">
+            <label for="driver-first-name">First name</label>
+            <input id="driver-first-name" name="firstName" type="text" required />
+          </div>
+          <div class="nx-field">
+            <label for="driver-last-name">Last name</label>
+            <input id="driver-last-name" name="lastName" type="text" required />
+          </div>
+        </div>
+
+        <div class="nx-field-row">
+          <div class="nx-field">
+            <label for="driver-dl">Driving licence number</label>
+            <input id="driver-dl" name="dlNumber" type="text" />
+          </div>
+          <div class="nx-field">
+            <label for="driver-state">State</label>
+            <input id="driver-state" name="state" type="text" placeholder="e.g. IL" />
+          </div>
+        </div>
+
+        <div class="nx-field-row">
+          <div class="nx-field">
+            <label for="driver-phone">Phone</label>
+            <input id="driver-phone" name="phone" type="text" />
+          </div>
+          <div class="nx-field">
+            <label for="driver-email">Email</label>
+            <input id="driver-email" name="email" type="email" />
+          </div>
+        </div>
+
+        <div class="nx-modal-footer">
+          <button type="button" class="nx-btn nx-btn-ghost" id="driver-modal-cancel">
+            Cancel
+          </button>
+          <button type="submit" class="nx-btn nx-btn-primary">
+            Save driver
           </button>
         </div>
       </form>
@@ -261,61 +364,91 @@
         tab.classList.add("nx-dash-tab--active");
 
         panels.forEach((panel) => {
-          panel.classList.toggle(
-            "is-active",
-            panel.dataset.panel === target
-          );
+          panel.classList.toggle("is-active", panel.dataset.panel === target);
         });
       });
     });
 
-    // Modal logic
-    const newLoadBtn = document.getElementById("new-load-btn");
-    const modal = document.getElementById("load-modal");
-    const closeBtn = document.getElementById("load-modal-close");
-    const cancelBtn = document.getElementById("load-modal-cancel");
-    const loadForm = document.getElementById("load-form");
-
-    function openModal() {
-      modal.classList.add("is-open");
-      document.body.classList.add("nx-modal-open");
-    }
-
-    function closeModal() {
-      modal.classList.remove("is-open");
-      document.body.classList.remove("nx-modal-open");
-      if (loadForm) loadForm.reset();
-    }
-
-    if (newLoadBtn) newLoadBtn.addEventListener("click", openModal);
-    if (closeBtn) closeBtn.addEventListener("click", closeModal);
-    if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        closeModal();
-      }
-    });
-
-    // In-memory loads store
+    // In-memory stores
     const loads = [];
-    const tableBody = document.getElementById("loads-table-body");
-    const emptyState = document.getElementById("loads-empty-state");
+    const drivers = [];
+    let driverIdCounter = 1;
 
-    function renderLoads() {
-      if (!tableBody) return;
-      tableBody.innerHTML = "";
+    // DOM refs for loads
+    const tableOverview = document.getElementById("loads-table-overview");
+    const tableLoads = document.getElementById("loads-table-loads");
+    const emptyOverview = document.getElementById("loads-empty-overview");
+    const emptyLoads = document.getElementById("loads-empty-loads");
 
-      if (!loads.length) {
-        emptyState.style.display = "block";
+    // DOM refs for drivers
+    const driversTableBody = document.getElementById("drivers-table-body");
+    const driversEmpty = document.getElementById("drivers-empty");
+    const driverSelect = document.getElementById("driver-select");
+
+    function renderDrivers() {
+      if (!driversTableBody || !driversEmpty || !driverSelect) return;
+
+      driversTableBody.innerHTML = "";
+      driverSelect.innerHTML = "";
+
+      if (!drivers.length) {
+        driversEmpty.style.display = "block";
+        // select: option "No drivers"
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "No drivers yet (add on Drivers tab)";
+        opt.disabled = true;
+        opt.selected = true;
+        driverSelect.appendChild(opt);
+        driverSelect.disabled = true;
         return;
       }
 
-      emptyState.style.display = "none";
+      driversEmpty.style.display = "none";
+      driverSelect.disabled = false;
 
-      loads.forEach((load, index) => {
+      drivers.forEach((d, index) => {
+        // table row
         const tr = document.createElement("tr");
         tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${d.firstName} ${d.lastName}</td>
+          <td>${d.dlNumber || "—"}</td>
+          <td>${d.state || "—"}</td>
+          <td>${d.phone || "—"}</td>
+          <td>${d.email || "—"}</td>
+        `;
+        driversTableBody.appendChild(tr);
+
+        // select option
+        const opt = document.createElement("option");
+        opt.value = String(d.id);
+        opt.textContent = `${d.firstName} ${d.lastName}`;
+        driverSelect.appendChild(opt);
+      });
+    }
+
+    function renderLoads() {
+      if (!tableOverview || !tableLoads || !emptyOverview || !emptyLoads) return;
+
+      tableOverview.innerHTML = "";
+      tableLoads.innerHTML = "";
+
+      if (!loads.length) {
+        emptyOverview.style.display = "block";
+        emptyLoads.style.display = "block";
+        return;
+      }
+
+      emptyOverview.style.display = "none";
+      emptyLoads.style.display = "none";
+
+      loads.forEach((load, index) => {
+        const driverName = load.driver ? `${load.driver.firstName} ${load.driver.lastName}` : "—";
+
+        // row for Overview
+        const tr1 = document.createElement("tr");
+        tr1.innerHTML = `
           <td>${index + 1}</td>
           <td>${load.loadId || "—"}</td>
           <td>
@@ -324,45 +457,143 @@
               ${load.pickupDate || "?"} — ${load.deliveryDate || "?"}
             </div>
           </td>
-          <td>${load.driver || "—"}</td>
+          <td>${driverName}</td>
           <td>${load.truck || "—"}</td>
-          <td><span class="nx-status-pill nx-status-${(load.status || "Planned").toLowerCase().replace(/\s+/g, "-")}">
-            ${load.status || "Planned"}
-          </span></td>
+          <td>
+            <span class="nx-status-pill nx-status-${(load.status || "Planned")
+              .toLowerCase()
+              .replace(/\s+/g, "-")}">
+              ${load.status || "Planned"}
+            </span>
+          </td>
           <td>${load.documentName || "—"}</td>
         `;
-        tableBody.appendChild(tr);
+        tableOverview.appendChild(tr1);
+
+        // row for Loads tab
+        const tr2 = document.createElement("tr");
+        tr2.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${load.loadId || "—"}</td>
+          <td>${load.pickup || "—"}</td>
+          <td>${load.delivery || "—"}</td>
+          <td>${driverName}</td>
+          <td>${load.status || "Planned"}</td>
+        `;
+        tableLoads.appendChild(tr2);
       });
     }
 
+    // ----- Modals: load -----
+    const newLoadBtn = document.getElementById("new-load-btn");
+    const loadModal = document.getElementById("load-modal");
+    const loadCloseBtn = document.getElementById("load-modal-close");
+    const loadCancelBtn = document.getElementById("load-modal-cancel");
+    const loadForm = document.getElementById("load-form");
+
+    function openLoadModal() {
+      loadModal.classList.add("is-open");
+      document.body.classList.add("nx-modal-open");
+    }
+
+    function closeLoadModal() {
+      loadModal.classList.remove("is-open");
+      document.body.classList.remove("nx-modal-open");
+      if (loadForm) loadForm.reset();
+      renderDrivers(); // восстановим состояния селекта
+    }
+
+    if (newLoadBtn) newLoadBtn.addEventListener("click", () => {
+      renderDrivers(); // актуализируем список драйверов перед открытием
+      openLoadModal();
+    });
+    if (loadCloseBtn) loadCloseBtn.addEventListener("click", closeLoadModal);
+    if (loadCancelBtn) loadCancelBtn.addEventListener("click", closeLoadModal);
+    loadModal.addEventListener("click", (e) => {
+      if (e.target === loadModal) closeLoadModal();
+    });
+
+    // ----- Modals: driver -----
+    const newDriverBtn = document.getElementById("new-driver-btn");
+    const driverModal = document.getElementById("driver-modal");
+    const driverCloseBtn = document.getElementById("driver-modal-close");
+    const driverCancelBtn = document.getElementById("driver-modal-cancel");
+    const driverForm = document.getElementById("driver-form");
+
+    function openDriverModal() {
+      driverModal.classList.add("is-open");
+      document.body.classList.add("nx-modal-open");
+    }
+
+    function closeDriverModal() {
+      driverModal.classList.remove("is-open");
+      document.body.classList.remove("nx-modal-open");
+      if (driverForm) driverForm.reset();
+    }
+
+    if (newDriverBtn) newDriverBtn.addEventListener("click", openDriverModal);
+    if (driverCloseBtn) driverCloseBtn.addEventListener("click", closeDriverModal);
+    if (driverCancelBtn) driverCancelBtn.addEventListener("click", closeDriverModal);
+    driverModal.addEventListener("click", (e) => {
+      if (e.target === driverModal) closeDriverModal();
+    });
+
+    // Submit driver
+    if (driverForm) {
+      driverForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(driverForm);
+
+        const driver = {
+          id: driverIdCounter++,
+          firstName: (formData.get("firstName") || "").toString().trim(),
+          lastName: (formData.get("lastName") || "").toString().trim(),
+          dlNumber: (formData.get("dlNumber") || "").toString().trim(),
+          state: (formData.get("state") || "").toString().trim(),
+          phone: (formData.get("phone") || "").toString().trim(),
+          email: (formData.get("email") || "").toString().trim()
+        };
+
+        drivers.push(driver);
+        renderDrivers();
+        closeDriverModal();
+      });
+    }
+
+    // Submit load
     if (loadForm) {
       loadForm.addEventListener("submit", (e) => {
         e.preventDefault();
-
         const formData = new FormData(loadForm);
         const fileInput = document.getElementById("document");
         const file = fileInput && fileInput.files && fileInput.files[0];
 
+        const driverId = formData.get("driverId");
+        let selectedDriver = null;
+        if (driverId) {
+          selectedDriver = drivers.find((d) => String(d.id) === String(driverId)) || null;
+        }
+
         const load = {
-          loadId: formData.get("loadId") || "",
-          status: formData.get("status") || "Planned",
-          pickup: formData.get("pickup") || "",
-          delivery: formData.get("delivery") || "",
-          pickupDate: formData.get("pickupDate") || "",
-          deliveryDate: formData.get("deliveryDate") || "",
-          driver: formData.get("driver") || "",
-          truck: formData.get("truck") || "",
+          loadId: (formData.get("loadId") || "").toString().trim(),
+          status: (formData.get("status") || "Planned").toString(),
+          pickup: (formData.get("pickup") || "").toString().trim(),
+          delivery: (formData.get("delivery") || "").toString().trim(),
+          pickupDate: (formData.get("pickupDate") || "").toString(),
+          deliveryDate: (formData.get("deliveryDate") || "").toString(),
+          truck: (formData.get("truck") || "").toString().trim(),
+          driver: selectedDriver,
           documentName: file ? file.name : ""
         };
 
-        // добавляем в начало списка
         loads.unshift(load);
         renderLoads();
-        closeModal();
+        closeLoadModal();
       });
     }
 
-    // initial render
+    // Initial render
+    renderDrivers();
     renderLoads();
   </script>
 </body>

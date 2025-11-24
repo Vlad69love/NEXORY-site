@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEXORY Mobile App — Driver demo</title>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/theme-nexory.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="nx-header">
+    <div class="nx-container nx-header-inner">
+      <a href="../index.html" class="nx-brand">
+        <img src="../assets/img/logo/nexory-logo.png" alt="NEXORY logo" class="nx-logo" />
+        <span class="nx-brand-text">NEXORY</span>
+      </a>
+
+      <nav class="nx-nav">
+        <a href="../index.html#about" class="nx-nav-link">About</a>
+        <a href="../index.html#ecosystem" class="nx-nav-link">Ecosystem</a>
+        <a href="../products/index.html" class="nx-nav-link">Products</a>
+        <a href="../platform/index.html" class="nx-nav-link">Platform</a>
+        <a href="./index.html" class="nx-nav-link">Mobile App</a>
+        <a href="../index.html#contact" class="nx-nav-link nx-nav-link--accent">Contact</a>
+      </nav>
+
+      <button class="nx-burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="nx-page-hero">
+    <div class="nx-container">
+      <div class="nx-breadcrumbs">
+        <a href="../index.html">Home</a> &nbsp;•&nbsp; <span>Mobile App</span>
+      </div>
+      <h1 class="nx-page-title">NEXORY Driver — Mobile App</h1>
+      <p class="nx-page-subtitle nx-section-text">
+        Concept demo of the NEXORY Driver mobile app. The screen below simulates how drivers will
+        see trips, details, documents and payouts inside one clean UI.
+      </p>
+      <div class="nx-tags">
+        <span class="nx-tag">Mobile-first</span>
+        <span class="nx-tag">iOS / Android</span>
+        <span class="nx-tag">Expo / React Native</span>
+        <span class="nx-tag">Scroll demo</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT: DESCRIPTION + PHONE DEMO -->
+  <main>
+    <section class="nx-page-section nx-section-alt">
+      <div class="nx-container nx-grid-2 nx-mobile-layout">
+        <!-- Text side -->
+        <div>
+          <h2 class="nx-section-title">Designed around the driver</h2>
+          <p class="nx-section-text">
+            The mobile app is the main touchpoint for drivers in the NEXORY ecosystem. The goal is
+            to remove chaos from chats and screenshots and give a clear “what, where and when”.
+          </p>
+
+          <ul class="nx-list nx-list-tight">
+            <li><strong>Home screen:</strong> active trip, next stop, ETA, payout.</li>
+            <li><strong>Trip details:</strong> pickup & delivery, notes, special instructions.</li>
+            <li><strong>Check-in / out:</strong> quick status updates with timestamps.</li>
+            <li><strong>Docs:</strong> BOL / POD photos tied to the load and factoring.</li>
+            <li><strong>History:</strong> past trips with miles and amount paid.</li>
+          </ul>
+
+          <p class="nx-section-text">
+            This page is a static demo. The real app will be built on <strong>Expo / React Native</strong>
+            and connected to the NEXORY Platform for live data.
+          </p>
+
+          <a href="../index.html#contact" class="nx-btn nx-btn-primary" style="margin-top: 16px;">
+            Discuss mobile collaboration
+          </a>
+        </div>
+
+        <!-- Phone demo side -->
+        <div class="nx-phone-demo">
+          <div class="nx-phone-frame">
+            <div class="nx-phone-notch"></div>
+            <div class="nx-phone-screen">
+              <div class="nx-phone-scroll">
+                <!-- Screen 1 -->
+                <div class="nx-phone-block">
+                  <div class="nx-phone-block-header">
+                    <span class="nx-phone-pill">Today</span>
+                    <span class="nx-phone-title">Active trip</span>
+                  </div>
+                  <div class="nx-phone-trip-card">
+                    <div class="nx-phone-trip-main">
+                      <div>
+                        <div class="nx-phone-label">Pickup</div>
+                        <div class="nx-phone-value">Chicago, IL</div>
+                      </div>
+                      <div>
+                        <div class="nx-phone-label">Delivery</div>
+                        <div class="nx-phone-value">Dallas, TX</div>
+                      </div>
+                    </div>
+                    <div class="nx-phone-trip-meta">
+                      <span>ETA: 14:30</span>
+                      <span>$2,350 • 980 mi</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Screen 2 -->
+                <div class="nx-phone-block">
+                  <div class="nx-phone-block-header">
+                    <span class="nx-phone-pill">Details</span>
+                    <span class="nx-phone-title">Stop info</span>
+                  </div>
+                  <ul class="nx-phone-list">
+                    <li>
+                      <span class="nx-phone-label">Pickup window</span>
+                      <span class="nx-phone-value">09:00–11:00</span>
+                    </li>
+                    <li>
+                      <span class="nx-phone-label">Reference</span>
+                      <span class="nx-phone-value">PO 784213 / RC-9921</span>
+                    </li>
+                    <li>
+                      <span class="nx-phone-label">Instructions</span>
+                      <span class="nx-phone-value">Check in at gate 3, call before arrival.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Screen 3 -->
+                <div class="nx-phone-block">
+                  <div class="nx-phone-block-header">
+                    <span class="nx-phone-pill">Docs</span>
+                    <span class="nx-phone-title">Upload POD</span>
+                  </div>
+                  <div class="nx-phone-doc-upload">
+                    <div class="nx-phone-doc-drop">
+                      <span class="nx-phone-doc-icon">📄</span>
+                      <span class="nx-phone-doc-text">Tap to scan BOL / POD</span>
+                    </div>
+                    <p class="nx-phone-doc-note">
+                      Files are linked to the trip and become instantly visible
+                      for dispatch, accounting and factoring.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Screen 4 -->
+                <div class="nx-phone-block">
+                  <div class="nx-phone-block-header">
+                    <span class="nx-phone-pill">Payouts</span>
+                    <span class="nx-phone-title">History</span>
+                  </div>
+                  <ul class="nx-phone-list">
+                    <li>
+                      <span class="nx-phone-value">Dallas, TX → Atlanta, GA</span>
+                      <span class="nx-phone-label">$2,150 • Paid</span>
+                    </li>
+                    <li>
+                      <span class="nx-phone-value">Columbus, OH → Chicago, IL</span>
+                      <span class="nx-phone-label">$1,350 • Paid</span>
+                    </li>
+                    <li>
+                      <span class="nx-phone-value">Indianapolis, IN → Denver, CO</span>
+                      <span class="nx-phone-label">$2,980 • Pending</span>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <p class="nx-section-text nx-text-small center" style="margin-top: 14px;">
+            Auto-scrolling view is a static front-end demo that imitates how NEXORY Driver
+            screens could look and feel.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="nx-footer">
+    <div class="nx-container nx-footer-inner">
+      <span>© <span id="year"></span> NEXORY. All rights reserved.</span>
+      <span class="nx-footer-meta">AI • Logistics • Ecosystem • IT</span>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Burger
+    const burger = document.querySelector(".nx-burger");
+    const nav = document.querySelector(".nx-nav");
+    if (burger) {
+      burger.addEventListener("click", () => {
+        burger.classList.toggle("is-open");
+        nav.classList.toggle("is-open");
+      });
+    }
+  </script>
+</body>
+</html>
+
